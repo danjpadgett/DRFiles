@@ -11,6 +11,7 @@
 '// Version: 2.2 - March 12, 2017 - Johan Arwidmark
 '// Version: 2.3 - April 18, 2017 - Henrik Bacher
 '// Version: 2.4 - September 6, 2017 - Christoph Voigt
+'// Version: 2.5 - September 14, 2017 - Dan Padgett
 '// 
 '// Twitter: @jarwidmark
 '// Blog   : http://deploymentresearch.com
@@ -23,6 +24,9 @@
 '//
 '// Twitter: @spucktier
 '// 
+'// Twitter: @danjpadgett
+'// Blog   : https://execmgr.net
+'//
 '// Disclaimer:
 '// This script is provided "AS IS" with no warranties, confers no rights and 
 '// is not supported by the authors or Deployment Artist.
@@ -89,7 +93,8 @@ Function ZTIProcess()
 	sSetupFile2017x86 = oUtility.ScriptDir & "\Source\VS2017\mu_visual_cpp_redistributable_for_visual_studio_2017_version_15.3_x86_11100229.exe"
 	sSetupFile2017x64 = oUtility.ScriptDir & "\Source\VS2017\mu_visual_cpp_redistributable_for_visual_studio_2017_version_15.3_x64_11100230.exe"
 	
-	sArguments = "/Q"
+	'// Added 'norestart' switch to sArguments to prevent forced (observed unhandled) restarts during SCCM OSD
+	sArguments = "/Q /norestart"
 
 	'// Removed Visual C++ 2005 since it's no longer supported (and don't get security updates)
 	' Checking for x86 files
